@@ -1,0 +1,16 @@
+def temperature():
+    while True:
+        ask = int(input("Do You Need To Convert (1)C -> F or (2)F -> C? "))
+        if ask == 1:
+            temp = float(input("Please Type The Temperature To Convert: "))
+            result = (temp * 9/5) + 32
+            print("The temperature in Fahrenheit is: ", result)
+        elif ask == 2:
+            temp = float(input("Please Type The Temperature To Convert: "))
+            result = (temp - 32) * 5/9
+            print("The temperature in Celsius is: ", result)
+        else:
+            print("Invalid option selected.")
+
+
+temperature()
