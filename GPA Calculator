@@ -1,0 +1,47 @@
+def calculate_gpa(grades, credit_hours):
+    total_grade_points = 0
+    total_credit_hours = 0
+
+    for grade, credit_hour in zip(grades, credit_hours):
+        if grade.upper() == 'A':
+            grade_points = 4.0
+        elif grade.upper() == 'B':
+            grade_points = 3.0
+        elif grade.upper() == 'C':
+            grade_points = 2.0
+        elif grade.upper() == 'D':
+            grade_points = 1.0
+        elif grade.upper() == 'F':
+            grade_points = 0.0
+        else:
+            print(f"Invalid grade: {grade}. Assuming grade points as 0.0.")
+            grade_points = 0.0
+
+        total_grade_points += grade_points * credit_hour
+        total_credit_hours += credit_hour
+
+    if total_credit_hours == 0:
+        return 0.0  # To avoid division by zero
+
+    gpa = total_grade_points / total_credit_hours
+    return gpa
+
+def main():
+    print("Welcome to the GPA Calculator!")
+    num_courses = int(input("Enter the number of courses: "))
+
+    grades = []
+    credit_hours = []
+
+    for i in range(num_courses):
+        course_grade = input(f"Enter the grade for course {i + 1} (A, B, C, D, F): ")
+        credit_hour = int(input(f"Enter the credit hours for course {i + 1}: "))
+
+        grades.append(course_grade)
+        credit_hours.append(credit_hour)
+
+    user_gpa = calculate_gpa(grades, credit_hours)
+    print(f"\nYour GPA is: {user_gpa:.2f}")
+
+if __name__ == "__main__":
+    main()
